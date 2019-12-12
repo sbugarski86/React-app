@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class TodoInput extends Component {
   render() {
     return (
-      <div  className="card card-body my-3" >
+      <div className="card card-body my-3" >
         <form>
           <div className="input-group">
             <div className="input-group-prepend">
@@ -21,8 +21,8 @@ class TodoInput extends Component {
 
           </div>
           <button
-            className='btn btn-block btn-primary mt-3'
-            onClick={this.props.handleAdd}>Add todo</button>
+            className={this.props.editItem ?"btn btn-block btn-success mt-3": "btn btn-block btn-primary mt-3" }
+            onClick={this.props.handleAdd}>{this.props.editItem ? "edit item": "add item"}</button>
         </form>
       </div>
 

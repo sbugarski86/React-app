@@ -1,9 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import uuid from 'uuid';
 import Todo from './Todo';
 import TodoInput from './TodoInput';
 class TodoForm extends Component {
   state = {
     text: '',
+    editItem: false,
+    id: uuid(),
     todos: ['Practise React', 'Practise Java Script']
   }
   handleChange = (e) => {
@@ -15,24 +18,39 @@ class TodoForm extends Component {
   handleAdd = (e) => {
     e.preventDefault();
     const newTodos = [...this.state.todos, this.state.text];
-    this.setState({ text: '', todos: newTodos })
+    this.setState({ text: '', todos: newTodos, editItem: false })
   }
-  handleDelete = (e) => {
-    console.log('delete',e.target.dataset.index);
-    e.preventDefault();
-    let index = e.target.dataset.index;
+  handleDelete = (index) => {
     const list = this.state.todos;
     list.splice(index, 1);
     this.setState({ list });
-   
   }
   clearList = (e) => {
+    e.preventDefault();
     this.setState({ text: '', todos: [] })
   }
- 
+  handleEdit = (id) => {
+    const items = [...this.state.todos];
+    const itemId = items[id];
+    const filteredItems = items.filter(item => item !== itemId)
+
+    console.log(itemId);
+    this.setState({
+       text: itemId,
+       todos: filteredItems,
+       editItem: true
+        })
+  }
+
   renderTodoList(todos) {
     return (
-      <div>{todos.map((item, index) => <Todo text={item} key={index}  index={index} clickHandler={this.handleDelete} />)}</div>
+      <div>{todos.map((item, index) => <Todo
+        text={item}
+        key={index}
+        index={index}
+        clickHandler={() => this.handleDelete(index)}
+        handleEdit={() => this.handleEdit(index)}
+      />)}</div>
     )
   }
 
@@ -50,6 +68,7 @@ class TodoForm extends Component {
               type='text'
               handleChange={this.handleChange}
               handleAdd={this.handleAdd}
+              editItem = {this.state.editItem}
             />
             <h3 className="text-capitalize text-center">todo list</h3>
             {todoList}
