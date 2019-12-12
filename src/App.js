@@ -1,16 +1,13 @@
 import React from 'react';
-
-import './App.css';
-const Component = React.Component;
-
-
+import TodoForm from './components/TodoForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  return (
-    <div className="App">
-     <h1>Hello</h1>
-    </div>
-  );
+return(
+  <div> 
+    <TodoForm/>
+  </div>
+)
 }
 
 
