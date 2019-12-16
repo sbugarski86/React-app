@@ -1,10 +1,44 @@
-import React, {Component} from 'react'
+import React, { useState } from 'react';
+import ContactForm from './ContactForm';
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  NavLink
+} from 'reactstrap';
 
-class Contact extends Component{
-  render(){
+const Contact = props => {
+  const { buttonLabel, className } = props;
+
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+
   return (
-  <h1>Stevan</h1>
-  )
-}
-}
+    <div>
+      <NavLink style={{ cursor: 'pointer' }} onClick={toggle}>
+        Contact
+      </NavLink>
+      <Modal
+        isOpen={modal}
+        modalTransition={{ timeout: 300 }}
+        backdropTransition={{ timeout: 300 }}
+        toggle={toggle}
+        className={className}
+      >
+        <ModalHeader toggle={toggle}>Contact information</ModalHeader>
+        <ModalBody>
+          <ContactForm />
+        </ModalBody>
+        <ModalFooter>
+          <Button color='danger' onClick={toggle}>
+            Cancel
+          </Button>
+        </ModalFooter>
+      </Modal>
+    </div>
+  );
+};
 export default Contact;

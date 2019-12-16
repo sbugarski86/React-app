@@ -16,10 +16,11 @@ const TodoForm = () => {
   const handleAdd = e => {
     e.preventDefault();
     const newTodos = [...todos, text];
-
-    setTodos(newTodos);
-    setText('');
-    setEditItem(false);
+    if (text !== '') {
+      setTodos(newTodos);
+      setText('');
+      setEditItem(false);
+    }
   };
   const handleDelete = index => {
     const list = [...todos];
@@ -45,39 +46,39 @@ const TodoForm = () => {
       <div>
         <Navbar />
       </div>
-    <div className='container'>
-      <div className='row'>
-        <div className='col-10 mx-aut col-md-8 mt-4'>
-          <h3 className='text-capitalize text-center'>todo input</h3>
-          <TodoInput
-            value={text}
-            type='text'
-            handleChange={handleChange}
-            handleAdd={handleAdd}
-            editItem={editItem}
-          />
-          <div>
-          <h3 className='text-capitalize text-center'>todo list</h3>
-            {todos.map((item, index) => (
-              <Todo
-                text={item}
-                key={index}
-                index={index}
-                clickHandler={() => handleDelete(index)}
-                handleEdit={() => handleEdit(index)}
-              />
-            ))}
+      <div className='container'>
+        <div className='row'>
+          <div className='col-10 mx-auto col-md-8 mt-4'>
+            <h3 className='text-capitalize text-center'>todo input</h3>
+            <TodoInput
+              value={text}
+              type='text'
+              handleChange={handleChange}
+              handleAdd={handleAdd}
+              editItem={editItem}
+            />
+            <div>
+              <h3 className='text-capitalize text-center'>todo list</h3>
+              {todos.map((item, index) => (
+                <Todo
+                  text={item}
+                  key={index}
+                  index={index}
+                  clickHandler={() => handleDelete(index)}
+                  handleEdit={() => handleEdit(index)}
+                />
+              ))}
+            </div>
+            <button
+              type='button'
+              className='btn btn-danger btn-block text-capitalize mt-5'
+              onClick={clearList}
+            >
+              clear list
+            </button>
           </div>
-          <button
-            type='button'
-            className='btn btn-danger btn-block text-capitalize mt-5'
-            onClick={clearList}
-          >
-            clear list
-          </button>
         </div>
       </div>
-    </div>
     </div>
   );
 };

@@ -1,15 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Contact from '../contactForm/Contact';
+//import ReactDOM from 'react-dom';
+//import Button from '@material-ui/core/Button';
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink
+} from 'reactstrap';
 
-//import PropTypes from 'prop-types';
-//import {Link} from 'react-router-dom';
-const  Navbar=(props) => {
+const NavbarFunc = props => {
+  const [collapsed, setCollapsed] = useState(true);
+
+  const toggleNavbar = (e) =>{
+    e.preventDefault();
+    setCollapsed(!collapsed);}
+
   return (
-  <div><button >Form</button></div>
-  )
+    <div>
+      <Navbar color='primary' dark>
+        <NavbarBrand href='/' className='mr-auto'>
+          My Todo App
+        </NavbarBrand>
+        <NavbarToggler onClick={toggleNavbar} className='mr-2' />
+        <Collapse isOpen={!collapsed} navbar>
+          <Nav navbar>
+            <NavItem>
+              <Contact />
+              <NavLink href='/components/'>Components</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href='https://github.com/reactstrap/reactstrap'>
+                GitHub
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    </div>
+  );
+};
 
-}
-
-
-
-
-export default Navbar;
+export default NavbarFunc;
