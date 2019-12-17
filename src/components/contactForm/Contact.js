@@ -10,7 +10,7 @@ import {
 } from 'reactstrap';
 
 const Contact = props => {
-  const { buttonLabel, className } = props;
+  const { className } = props;
 
   const [modal, setModal] = useState(false);
 
@@ -31,12 +31,14 @@ const Contact = props => {
         <ModalHeader toggle={toggle}>Contact information</ModalHeader>
         <ModalBody>
           <ContactForm />
+         
         </ModalBody>
         <ModalFooter>
-          <Button color='danger' onClick={toggle}>
+        
+        <Button color='danger' onClick={toggle}>
             Cancel
           </Button>
-        </ModalFooter>
+          </ModalFooter>
       </Modal>
     </div>
   );
