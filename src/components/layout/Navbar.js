@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Contact from '../contactForm/Contact';
+import { Collapse } from 'reactstrap';
+
 const NavbarFunc = props => {
   const [collapse, setCollapse] = useState(false);
   const toggle = () => setCollapse(!collapse);
@@ -13,19 +15,19 @@ const NavbarFunc = props => {
         <div className='navbarLinks'>
           <Contact />
 
-          <a href='https://gitHub.com/sbugarski86' className='links'>
+          <a href='https://gitHub.com/sbugarski86' className='link'>
             Github
           </a>
         </div>
       </nav>
       <div className='toggleContainer'>
-        <div className={'collapse' + (collapse ? 'in' : '')}>
+        <Collapse isOpen={collapse}>
           <Contact />
 
-          <a href='https://gitHub.com/sbugarski86' className='links'>
+          <a href='https://gitHub.com/sbugarski86'>
             Github
           </a>
-        </div>
+        </Collapse>
       </div>
     </div>
   );

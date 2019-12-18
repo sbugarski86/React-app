@@ -15,8 +15,9 @@ const TodoForm = () => {
   };
   const handleAdd = e => {
     e.preventDefault();
+    const letterNumber = /^[0-9a-zA-Z]+$/;
     const newTodos = [...todos, text];
-    if (text !== '') {
+    if (text.match(letterNumber) && text.length < 30) {
       setTodos(newTodos);
       setText('');
       setEditItem(false);

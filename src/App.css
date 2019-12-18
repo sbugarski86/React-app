@@ -18,6 +18,7 @@ html {
   justify-content: space-between;
 }
 .navbarLinks {
+  color: white;
   display: flex;
   cursor: pointer;
   justify-content: center;
@@ -42,19 +43,13 @@ html {
   background-color: #93c5ee83;
   text-align: center;
 }
-.collapse {
-  display: none;
-}
 
-.collapse.in {
-  display: block;
-}
-
-@media only screen and (max-width: 900px) {
-  .toggleLinks {
-    cursor: pointer;
+@media only screen and (min-width: 900px) {
+  .toggleContainer {
+    display: none;
+  
   }
 }
-.links {
+.link {
   color: white;
 }
