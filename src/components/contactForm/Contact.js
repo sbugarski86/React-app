@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import ContactForm from './ContactForm';
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  NavLink
-} from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, NavLink } from 'reactstrap';
 
 const Contact = props => {
   const { className } = props;
@@ -31,14 +24,10 @@ const Contact = props => {
         <ModalHeader toggle={toggle}>Contact information</ModalHeader>
         <ModalBody>
           <ContactForm />
-         
-        </ModalBody>
-        <ModalFooter>
-        
-        <Button color='danger' onClick={toggle}>
+          <Button color='danger' onClick={toggle} style={{ float: 'right' }}>
             Cancel
           </Button>
-          </ModalFooter>
+        </ModalBody>
       </Modal>
     </div>
   );

@@ -1,32 +1,60 @@
 html {
-  font-size: 10px;
+  font-size: 16px;
 }
 
-.App {
+@media only screen and (max-width: 900px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+.navbarStyle {
+  color: white;
+  width: 100%;
+  background-color: #007bff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.navbarLinks {
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 900px) {
+  .navbarLinks {
+    display: none;
+  }
+}
+.toggleButton {
+  font-size: 25px;
+  cursor: pointer;
+}
+@media only screen and (min-width: 900px) {
+  .toggleButton {
+    display: none;
+  }
+}
+.toggleContainer {
+  float: right;
+  background-color: #93c5ee83;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
+.collapse {
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.collapse.in {
+  display: block;
+}
+
+@media only screen and (max-width: 900px) {
+  .toggleLinks {
+    cursor: pointer;
+  }
+}
+.links {
   color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-.todo-container {
-  display: flex;
-  justify-content: space-around;
-  width: 50rem;
 }

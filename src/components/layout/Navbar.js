@@ -1,45 +1,32 @@
 import React, { useState } from 'react';
 import Contact from '../contactForm/Contact';
-//import ReactDOM from 'react-dom';
-//import Button from '@material-ui/core/Button';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from 'reactstrap';
-
 const NavbarFunc = props => {
-  const [collapsed, setCollapsed] = useState(true);
-
-  const toggleNavbar = (e) =>{
-    e.preventDefault();
-    setCollapsed(!collapsed);}
-
+  const [collapse, setCollapse] = useState(false);
+  const toggle = () => setCollapse(!collapse);
   return (
     <div>
-      <Navbar color='primary' dark>
-        <NavbarBrand href='/' className='mr-auto'>
-          My Todo App
-        </NavbarBrand>
-        <NavbarToggler onClick={toggleNavbar} className='mr-2' />
-        <Collapse isOpen={!collapsed} navbar>
-          <Nav navbar>
-            <NavItem>
-              <Contact />
-              <NavLink href='/components/'>Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href='https://github.com/reactstrap/reactstrap'>
-                GitHub
-              </NavLink>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
+      <nav className='navbarStyle'>
+        <h3>My Todo App</h3>
+        <div>
+          <i onClick={toggle} className='toggleButton fa fa-bars' />
+        </div>
+        <div className='navbarLinks'>
+          <Contact />
+
+          <a href='https://gitHub.com/sbugarski86' className='links'>
+            Github
+          </a>
+        </div>
+      </nav>
+      <div className='toggleContainer'>
+        <div className={'collapse' + (collapse ? 'in' : '')}>
+          <Contact />
+
+          <a href='https://gitHub.com/sbugarski86' className='links'>
+            Github
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
