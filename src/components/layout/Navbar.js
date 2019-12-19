@@ -24,7 +24,7 @@ const NavbarFunc = props => {
         <Collapse isOpen={collapse}>
           <Contact />
 
-          <a href='https://gitHub.com/sbugarski86'>
+          <a href='https://gitHub.com/sbugarski86' className='linkToggle'>
             Github
           </a>
         </Collapse>

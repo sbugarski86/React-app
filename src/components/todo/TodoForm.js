@@ -15,7 +15,9 @@ const TodoForm = () => {
   };
   const handleAdd = e => {
     e.preventDefault();
-    const letterNumber = /^[0-9a-zA-Z]+$/;
+    const letterNumber =
+      '^[A-Za-z0-9 /!/./-/_]*[A-Za-z0-9/!/./-][A-Za-z0-9/!/./-/_]*$';
+    //const letterNumber = /^[\w\-\s]+$/;
     const newTodos = [...todos, text];
     if (text.match(letterNumber) && text.length < 30) {
       setTodos(newTodos);
