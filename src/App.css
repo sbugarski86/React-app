@@ -65,3 +65,20 @@ html {
   color: black;
   text-decoration: none;
 }
+.lineThrough{
+  text-decoration-line: line-through;
+}
+.dot,
+.dotChecked{
+  height: 15px;
+  width: 15px;
+  background-color: green;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dotChecked{
+  background-color: red;
+}
+.editItem{
+  display: none;
+}
