@@ -13,14 +13,17 @@ const Todo = props => {
   const handleEditItem = () => {
     setEditItem(!editItem);
   };
-  const checkOut = e => {
+  const checkOut = () => {
     setEditItem(false);
-    console.log('Click from ok button', editItem);
   };
   return editItem ? (
-    <div>
-      <input value={editItemtext} onChange={onChange} />
-      <button onClick={handleEditItem}>X</button>
+    <div className='editItem'>
+      <div> &nbsp;</div>
+      <input
+        defaultValue={editItemtext ? editItemtext : props.text}
+        onChange={onChange}
+        className='editTextInput'
+      />
       <button onClick={checkOut}>Ok</button>
     </div>
   ) : (
@@ -37,19 +40,19 @@ const Todo = props => {
 
         <div>
           <p className={!checked ? null : 'lineThrough'}>
-            {editItemtext ? editItemtext : props.text}
+            {!editItemtext ? props.text : editItemtext}
           </p>
         </div>
         <div>
           <span className='mx-2 text-success'>
-            <i
-              className='fa fa-edit'
-              data-index={props.index}
-              onClick={handleEditItem}
-            ></i>
+            <i className='fa fa-edit' onClick={handleEditItem}></i>
           </span>
-          <span className='mx-2 text-danger' onClick={props.clickHandler}>
-            <i className='fa fa-trash'></i>
+          <span className='mx-2 text-danger'>
+            <i
+              className='fa fa-trash'
+              data-index={props.index}
+              onClick={props.clickHandler}
+            ></i>
           </span>
         </div>
       </div>

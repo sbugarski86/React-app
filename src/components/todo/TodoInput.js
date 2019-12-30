@@ -3,7 +3,7 @@ import React from 'react';
 
 const TodoInput = props => {
   return (
-    <div className='card card-body my-3'>
+    <div className='card card-body my-5'>
       <form>
         <div className='input-group'>
           <div className='input-group-prepend'>

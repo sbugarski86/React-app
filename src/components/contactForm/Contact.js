@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ContactForm from './ContactForm';
+import FormikForm from './FormikForm';
 import { Button, Modal, ModalHeader, ModalBody, NavLink } from 'reactstrap';
 
 const Contact = props => {
@@ -23,8 +23,12 @@ const Contact = props => {
       >
         <ModalHeader toggle={toggle}>Contact information</ModalHeader>
         <ModalBody>
-          <ContactForm />
-          <Button color='danger' onClick={toggle} style={{ float: 'right' }}>
+          <FormikForm />
+          <Button
+            color='danger'
+            onClick={toggle}
+            style={{ width: '80%', marginLeft: '10%' }}
+          >
             Cancel
           </Button>
         </ModalBody>

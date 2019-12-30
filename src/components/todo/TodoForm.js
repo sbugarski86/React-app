@@ -23,7 +23,9 @@ const TodoForm = () => {
       setText('');
     }
   };
-  const handleDelete = index => {
+  const handleDelete = e => {
+    console.log(e.target.dataset.index)
+    const index = e.target.dataset.index;
     const list = [...todos];
     list.splice(index, 1);
     setTodos(list);
@@ -42,7 +44,7 @@ const TodoForm = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-10 mx-auto col-md-8 mt-4'>
-            <h3 className='text-capitalize text-center'>todo input</h3>
+            <h3 className='text-capitalize text-center my-5'>todo input</h3>
             <TodoInput
               value={text}
               type='text'
@@ -50,14 +52,13 @@ const TodoForm = () => {
               handleAdd={e => handleAdd(e)}
             />
             <div>
-              <h3 className='text-capitalize text-center'>todo list</h3>
+              <h3 className='text-capitalize text-center my-5'>todo list</h3>
               {todos.map((item, index) => (
                 <Todo
                   text={item}
-                  value={text}
                   key={index}
                   index={index}
-                  clickHandler={() => handleDelete(index)}
+                  clickHandler={handleDelete}
                 />
               ))}
             </div>
