@@ -1,4 +1,3 @@
-  
 import React from 'react';
 
 const TodoInput = props => {
@@ -20,11 +19,7 @@ const TodoInput = props => {
           />
         </div>
         <button
-          className={
-            props.editItem
-              ? 'btn btn-block btn-success mt-3'
-              : 'btn btn-block btn-primary mt-3'
-          }
+          className={props.editItem ? null : 'btn btn-block btn-primary mt-3'}
           onClick={props.handleAdd}
         >
           {props.editItem ? 'edit item' : 'add item'}

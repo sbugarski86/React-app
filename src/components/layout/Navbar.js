@@ -8,7 +8,7 @@ const NavbarFunc = props => {
   return (
     <div>
       <nav className='navbarStyle'>
-        <h3>My Todo App</h3>
+        <h3>My To Do App</h3>
         <div>
           <i onClick={toggle} className='toggleButton fa fa-bars' />
         </div>

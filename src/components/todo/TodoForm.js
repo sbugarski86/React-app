@@ -25,7 +25,6 @@ const TodoForm = () => {
       setTodos(newTodos);
       setText('');
     } else {
-
     }
   };
   const handleDelete = e => {
@@ -39,8 +38,8 @@ const TodoForm = () => {
     setText('');
     setTodos([]);
   };
-  const moveUp = e => {
-    let fromIndex = e.target.dataset.index;
+  const moveUp = index => {
+    let fromIndex = index;
     let toIndex = fromIndex - 1;
     let todosList = [...todos];
     if (fromIndex !== 0) {
@@ -49,8 +48,8 @@ const TodoForm = () => {
       setTodos(todosList);
     }
   };
-  const moveDown = e => {
-    let fromIndex = e.target.dataset.index;
+  const moveDown = index => {
+    let fromIndex = index;
     let toIndex = fromIndex + 1;
     let todosList = [...todos];
     if (fromIndex !== todosList.length) {
@@ -67,7 +66,7 @@ const TodoForm = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-10 mx-auto col-md-8 mt-4'>
-            <h3 className='text-capitalize text-center my-5'>todo input</h3>
+            <h3 className='text-capitalize text-center my-5'>to do input</h3>
             <TodoInput
               value={text}
               type='text'
@@ -75,7 +74,7 @@ const TodoForm = () => {
               handleAdd={e => handleAdd(e)}
             />
             <div>
-              <h3 className='text-capitalize text-center my-5'>todo list</h3>
+              <h3 className='text-capitalize text-center my-5'>to do list</h3>
               {todos.map((item, index) =>
                 item ? (
                   <Todo
@@ -83,8 +82,8 @@ const TodoForm = () => {
                     key={item.key}
                     index={index}
                     handleDelete={handleDelete}
-                    moveUp={moveUp}
-                    moveDown={moveDown}
+                    moveUp={() => moveUp(index)}
+                    moveDown={() => moveDown(index)}
                   />
                 ) : null
               )}
