@@ -5,9 +5,11 @@ import TodoInput from './TodoInput';
 const TodoForm = () => {
   const [text, setText] = useState('');
   const [todos, setTodos] = useState([
-    'Practise React',
-    'Practise Java Script'
+    { text: 'Practise React', key: 0 },
+    { text: 'Practise JavaScript', key: 1 }
   ]);
+  const [nextKey, setNextKey] = useState(2);
+
   const handleChange = e => {
     setText(e.target.value);
   };
@@ -16,15 +18,17 @@ const TodoForm = () => {
     e.preventDefault();
     const letterNumber =
       '^[A-Za-z0-9 /!/./-/_]*[A-Za-z0-9/!/./-][A-Za-z0-9/!/./-/_]*$';
-    //const letterNumber = /^[\w\-\s]+$/;
-    const newTodos = [...todos, text];
     if (text.match(letterNumber) && text.length < 30) {
+      const newKey = nextKey;
+      setNextKey(nextKey + 1);
+      const newTodos = [...todos, { text, key: newKey }];
       setTodos(newTodos);
       setText('');
+    } else {
+
     }
   };
   const handleDelete = e => {
-    console.log(e.target.dataset.index)
     const index = e.target.dataset.index;
     const list = [...todos];
     list.splice(index, 1);
@@ -35,7 +39,26 @@ const TodoForm = () => {
     setText('');
     setTodos([]);
   };
-
+  const moveUp = e => {
+    let fromIndex = e.target.dataset.index;
+    let toIndex = fromIndex - 1;
+    let todosList = [...todos];
+    if (fromIndex !== 0) {
+      let movedCard = todosList.splice(fromIndex, 1)[0];
+      todosList.splice(toIndex, 0, movedCard);
+      setTodos(todosList);
+    }
+  };
+  const moveDown = e => {
+    let fromIndex = e.target.dataset.index;
+    let toIndex = fromIndex + 1;
+    let todosList = [...todos];
+    if (fromIndex !== todosList.length) {
+      let movedCard = todosList.splice(fromIndex, 1)[0];
+      todosList.splice(toIndex, 0, movedCard);
+      setTodos(todosList);
+    }
+  };
   return (
     <div>
       <div>
@@ -53,14 +76,18 @@ const TodoForm = () => {
             />
             <div>
               <h3 className='text-capitalize text-center my-5'>todo list</h3>
-              {todos.map((item, index) => (
-                <Todo
-                  text={item}
-                  key={index}
-                  index={index}
-                  clickHandler={handleDelete}
-                />
-              ))}
+              {todos.map((item, index) =>
+                item ? (
+                  <Todo
+                    text={item.text}
+                    key={item.key}
+                    index={index}
+                    handleDelete={handleDelete}
+                    moveUp={moveUp}
+                    moveDown={moveDown}
+                  />
+                ) : null
+              )}
             </div>
             <button
               type='button'

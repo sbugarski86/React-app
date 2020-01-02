@@ -72,13 +72,12 @@ const FormikApp = withFormik({
       .min(9, 'Password must be 9 characters or longer')
       .required('Password is required')
   }),
-  handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
+  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     setTimeout(() => {
       if (values.email === 'bugarski.stevan@gmail.com') {
         setErrors({ email: 'That email is already taken' });
       } else {
         resetForm();
-        setStatus({ success: 'Email sent!' });
       }
       setSubmitting(false);
     }, 2000);
