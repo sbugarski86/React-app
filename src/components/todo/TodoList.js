@@ -48,20 +48,25 @@ const Todo = props => {
           <p className={!checked ? null : 'lineThrough'}>{currentText}</p>
         </div>
         <div>
-          <span>
-            <i
-              className='fa fa-arrow-up text-success'
-              data-index={props.index}
-              onClick={props.moveUp}
-            ></i>
-          </span>
-          <span>
-            <i
-              className='fa fa-arrow-down text-primary'
-              data-index={props.index}
-              onClick={props.moveDown}
-            ></i>
-          </span>
+          {props.index !== 0 && (
+            <span>
+              <i
+                className='fa fa-arrow-up text-success'
+                data-index={props.index}
+                onClick={props.moveUp}
+              ></i>
+            </span>
+          )}
+          {props.index !== props.todos.length - 1 && (
+            <span>
+              <i
+                className='fa fa-arrow-down text-primary'
+                data-index={props.index}
+                onClick={props.moveDown}
+              ></i>
+            </span>
+          )}
+
           <span className='mx-2 text-success'>
             <i className='fa fa-edit' onClick={handleEditItem}></i>
           </span>

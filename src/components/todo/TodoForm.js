@@ -78,6 +78,7 @@ const TodoForm = () => {
               {todos.map((item, index) =>
                 item ? (
                   <Todo
+                    todos = {todos}
                     text={item.text}
                     key={item.key}
                     index={index}
