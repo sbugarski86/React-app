@@ -19,9 +19,9 @@
   <li><em>As a student I want To Do List App so that I can see finished and unfinished homework tasks.</em></li>
 	<h2>Wiraframes:</h2>
 	<h3>Desktop view:</h3>
-	<img src="images/Desctop_multiple_res_view.png" width="450px">
+	<img src="img/Screenshot(146).png" width="450px">
 	<h3>Mobile view:</h3>
-	<img src="images/mobil_multiple_res_view.png" height="450px">
+	<img src="img/Screenshot(143).png" height="450px">
 	</ol>
 	
 	
@@ -43,15 +43,9 @@
 	<li>React, React Hooks, JavaScript.</li>
 	</ol>
 <h3>Results:</h3>
-<h4>Desktop view no results:</h4>
-<img src="images/desktop_view_no_results.png" width="450px">
-<h4>Desktop view with results:</h4>
-<img src="images/desktop_view.png" width="450px">
-<h4>Tablet view:</h4>
-<img src="images/tablet_view.png" height="450px">
-<h4>Mobile view no results:</h4>
-<img src="images/mobile_view_no_results.png" height="450px">
+<h4>Desktop view:</h4>
+<img src="img/Screenshot(140).png" width="450px">
 <h4>Mobile view:</h4>
-<img src="images/mobile_view.png" height="450px">
+<img src="img/Screenshot(141).png" height="450px">
 <h3>Future improvements:</h3>
 <p> In the future my plan is to learn React Redux, to improve my knowledge in React Hooks to more advanced so that I'm going to be able to write more complex React Code.</p>
