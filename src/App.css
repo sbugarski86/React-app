@@ -130,9 +130,9 @@ html {
 .formikButton:hover {
   background-color: #0067d4;
 }
-.visibilityHidden{
+.visibilityHidden {
   display: none;
 }
-.visible{
+.visible {
   display: block;
 }
